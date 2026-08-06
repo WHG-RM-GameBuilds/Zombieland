@@ -62,7 +62,7 @@
       window.visualViewport.addEventListener('resize', resizeCanvas);
       window.visualViewport.addEventListener('scroll', function () { window.scrollTo(0, 0); });
     }
-    // Scroll-lock: CSS touch-action alone won't stop iOS pinch-pan; non-passive touchmove does.
+    // Scroll-lock: CSS touch-action alone won't stop iOS pinch-pan; non-passive touchmove .
     // Unity still receives the touch events (preventDefault only cancels browser scroll/zoom).
     window.addEventListener('scroll', function () { window.scrollTo(0, 0); }, { passive: true });
     document.addEventListener('touchmove', function (e) { e.preventDefault(); }, { passive: false });
