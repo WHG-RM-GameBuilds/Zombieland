@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Zombieland</title>
+  <title>game</title>
   <style>
     body,
     html {
@@ -43,7 +43,7 @@
     const canvas=document.querySelector("#unity-canvas");
 
     function resizeCanvas() {
-      // visualViewport is the
+      // visualViewport is the accurate visible area on iOS; fall back to innerWidth/Height.
       var vv = window.visualViewport;
       var w = Math.round(vv ? vv.width : window.innerWidth);
       var h = Math.round(vv ? vv.height : window.innerHeight);
@@ -62,7 +62,7 @@
       window.visualViewport.addEventListener('resize', resizeCanvas);
       window.visualViewport.addEventListener('scroll', function () { window.scrollTo(0, 0); });
     }
-    // Scroll-lock: CSS touch-action alone won't stop iOS pinch-pan; non-passive touchmove .
+    // Scroll-lock: CSS touch-action alone won't stop iOS pinch-pan; non-passive touchmove does.
     // Unity still receives the touch events (preventDefault only cancels browser scroll/zoom).
     window.addEventListener('scroll', function () { window.scrollTo(0, 0); }, { passive: true });
     document.addEventListener('touchmove', function (e) { e.preventDefault(); }, { passive: false });
@@ -70,14 +70,14 @@
     document.addEventListener('gesturechange', function (e) { e.preventDefault(); });
 
     var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Build.loader.js";
+      var loaderUrl = buildUrl + "/game.loader.js";
       var config = {
-        dataUrl: buildUrl + "/Build.data.unityweb",
-        frameworkUrl: buildUrl + "/Build.framework.js.unityweb",
-        codeUrl: buildUrl + "/Build.wasm.unityweb",
+        dataUrl: buildUrl + "/game.data.unityweb",
+        frameworkUrl: buildUrl + "/game.framework.js.unityweb",
+        codeUrl: buildUrl + "/game.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Zombieland",
+        companyName: "WhG",
+        productName: "game",
         productVersion: "1.0",
       };
 
